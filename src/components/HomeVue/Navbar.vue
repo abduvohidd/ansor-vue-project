@@ -1,0 +1,449 @@
+<template>
+  <div class="navbar">
+    <div class="container">
+      <nav>
+        <span class="navbar-image">
+          <slot />
+        </span>
+
+        <img class="nav-image" src="@/assets/logo-1.svg" alt="" />
+
+        <div class="links">
+          <div class="select" :color="color">
+            <h4 @click="toggle">Our Services</h4>
+            <div class="mini-select" v-if="showSelect">
+              <router-link :to="{ name: 'Industry' }"
+                >IT consulting</router-link
+              >
+              <router-link :to="{ name: 'Industry' }"
+                >Mobile application devs</router-link
+              >
+              <router-link :to="{ name: 'Industry' }"
+                >Dedicated team</router-link
+              >
+              <router-link :to="{ name: 'Industry' }">UX/UI design</router-link>
+              <router-link :to="{ name: 'Industry' }"
+                >Infrastructure optimization</router-link
+              >
+              <router-link :to="{ name: 'Industry' }"
+                >Implementation of ERP</router-link
+              >
+            </div>
+            <span class="span-1" v-if="span1"></span>
+            <span class="span-2" v-if="span2"></span>
+          </div>
+          <div class="select">
+            <h4 @click="togglee">Industry</h4>
+            <div class="mini-selectt" v-if="showSelectt">
+              <router-link :to="{ name: 'Industry' }">Healthcare</router-link>
+              <router-link :to="{ name: 'Education' }">Education</router-link>
+              <router-link :to="{ name: 'Portfolio' }">Finance</router-link>
+            </div>
+            <span class="span-1" v-if="span11"></span>
+            <span class="span-2" v-if="span22"></span>
+          </div>
+          <router-link :to="{ name: 'Portfolio' }">Portfolio</router-link>
+          <router-link :to="{ name: 'AboutUs' }">About Us</router-link>
+        </div>
+
+        <teleport to="#modals" v-if="showModal">
+          <Modal>
+            <div class="modal-about">
+              <div class="modal-img">
+                <img src="@/assets/cards/log0-2.svg" alt="" />
+              </div>
+              <div class="modal-text">
+                <h1>
+                  Get in touch
+                  <span :class="(isActive = 'active')">with us</span>
+                </h1>
+
+                <form>
+                  <label>Your name</label>
+                  <input type="text" required placeholder="Name here" />
+
+                  <label>Phone number</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+998 (--)--- -- --"
+                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                    required
+                  />
+                  <router-link :to="{ name: 'Industry' }">
+                    <button>Call me</button>
+                  </router-link>
+                </form>
+              </div>
+            </div>
+          </Modal>
+        </teleport>
+
+        <div class="aselect" :data-value="value" :data-list="list">
+          <div class="selector" @click="togle()">
+            <div class="label">
+              <span><img :src="valueimg" alt="" /> {{ value }}</span>
+            </div>
+            <div class="arrow" :class="{ expanded: visible }"></div>
+            <div :class="{ hidden: !visible, visible }">
+              <ul>
+                <li
+                  :class="{ current: item === value }"
+                  v-for="item in list"
+                  :key="item"
+                  @click="select(item.img && item.item)"
+                >
+                  <img :src="item.img" alt="" /> {{ item.item }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <button class="button" @click="toggleModal">Contant Us</button>
+
+        
+      </nav>
+    </div>
+  </div>
+</template>
+
+<script>
+import Modal from "@/components/Modal.vue";
+export default {
+  name: "locale-changer",
+  props: {
+    color: String,
+  },
+  components: { Modal },
+
+  data() {
+    return {
+      showModal: false,
+      showSelect: false,
+      showSelectt: false,
+      span1: true,
+      span2: false,
+      span11: true,
+      span22: false,
+
+      valueimg: require("@/assets/flag/eng-flag.svg"),
+      value: "En",
+      list: [
+        { img: require("@/assets/flag/uzb-flag.svg"), item: "Uzb" },
+        { img: require("@/assets/flag/rus-flag.svg"), item: "Rus" },
+      ],
+      visible: false,
+
+    };
+  },
+
+  methods: {
+    toggleModal() {
+      this.showModal = !this.showModal;
+    },
+    toggle() {
+      this.showSelect = !this.showSelect;
+      this.span1 = !this.span1;
+      this.span2 = !this.span2;
+    },
+    togglee() {
+      this.showSelectt = !this.showSelectt;
+      this.span11 = !this.span11;
+      this.span22 = !this.span22;
+    },
+
+    togle() {
+      this.visible = !this.visible;
+    },
+    select(option) {
+      this.value = option;
+    },
+  },
+};
+</script>
+
+<style>
+select {
+  border: none;
+  background: transparent;
+  color: white;
+}
+select option {
+  color: black;
+  background: transparent;
+  border: 1px solid #5d5fef;
+  border-radius: 5px;
+}
+.navbar {
+  padding: 16px 10px;
+  margin-bottom: 30px;
+}
+nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.links {
+  display: flex;
+  width: 50%;
+  margin-left: 10rem;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.links a {
+  margin: 0 30px;
+  color: rgb(146, 145, 145);
+  text-decoration: none;
+  font-family: "SF UI Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+}
+.select {
+  position: relative;
+  display: flex;
+}
+.select span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  /* background: white; */
+}
+.select .span-1::before {
+  content: "";
+  position: absolute;
+  border-left: 8px solid transparent;
+  border-top: 8px solid white;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  top: 50%;
+  left: -2rem;
+  transform: translateX(120%);
+}
+.select .span-2::after {
+  content: "";
+  position: absolute;
+  border-left: 8px solid transparent;
+  border-bottom: 8px solid white;
+  border-right: 8px solid transparent;
+  border-top: 8px solid transparent;
+  top: 50%;
+  left: -2rem;
+  transform: translateX(120%) translateY(-70%);
+}
+.select a {
+  margin: 10px 8px;
+}
+.select h4 {
+  font-family: "SF UI Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin: 0 30px;
+  cursor: pointer;
+}
+
+.links .select .mini-select {
+  display: flex;
+  flex-direction: column;
+  background: rgba(199 193 255 / 50%);
+  backdrop-filter: blur(26px);
+  border-radius: 8px;
+  margin-top: 40px;
+  margin-left: -40px;
+  position: absolute;
+  border: 1px solid #5d5fef;
+  align-items: flex-start;
+  padding: 10px;
+  width: 222px;
+}
+.links .select .mini-selectt {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #5d5fef;
+  background: rgba(199 193 255 / 50%);
+  backdrop-filter: blur(26px);
+  border-radius: 8px;
+  margin-top: 40px;
+  margin-left: -40px;
+  position: absolute;
+  align-items: flex-start;
+  padding: 10px;
+  width: 140px;
+}
+
+.mini-selectt a {
+  margin-top: 5px;
+  z-index: 1%;
+  color: #ffffff;
+}
+.mini-selectt a:hover {
+  cursor: pointer;
+  color: #5d5fef;
+}
+.mini-select a {
+  margin-top: 5px;
+  z-index: 1%;
+  color: #ffffff;
+}
+.mini-select a:hover {
+  cursor: pointer;
+  color: #5d5fef;
+}
+
+.language {
+  display: flex;
+  align-items: center;
+}
+.language h4 {
+  margin: 0 8px;
+}
+.language h4 img {
+  margin-right: 5px;
+}
+
+.contact-page {
+  background: rgb(212, 218, 218);
+  margin: 5px 0;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+}
+.katalog {
+  background: white;
+  padding: 0.7rem;
+  border-radius: 5%;
+  display: flex;
+  align-items: center;
+  margin: 0 37px;
+  width: 10%;
+  /* text-align: center; */
+  justify-content: center;
+}
+.search {
+  /* background-color: white; */
+  width: 26%;
+}
+.search input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+.search input[tupe="text"]:focus {
+  border: 3px solid #555;
+}
+
+.button {
+  font-family: "SF UI Display";
+  font-style: normal;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 18px 40px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  background: transparent;
+  margin-left: 2rem;
+}
+
+/*
+
+*/
+
+.aselect {
+  /* width: 270px; */
+  margin: 20px auto;
+}
+.aselect .selector {
+  border: 1px solid gainsboro;
+  background: transparent;
+  position: relative;
+  border: none;
+  z-index: 1;
+  width: 115px;
+}
+.aselect .arrow {
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid #888;
+  transform: rotateZ(0deg) translateY(0px);
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.59, 1.39, 0.37, 1.01);
+}
+.aselect .expanded {
+  transform: rotateZ(180deg) translateY(2px);
+}
+.aselect .label {
+  display: block;
+  padding: 12px;
+  font-size: 16px;
+  color: #888;
+}
+.aselect .label span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aselect .label span img {
+  margin-right: 10px;
+}
+.aselect ul {
+  width: 80%;
+  margin: 1rem 1.5rem;
+  list-style-type: none;
+  padding: 0;
+  /* margin: 0; */
+  font-size: 16px;
+  border: 1px solid gainsboro;
+  position: absolute;
+  z-index: 1;
+  background: transparent;
+  border: 1px solid #5d5fef;
+  border-radius: 5px;
+}
+
+.aselect li {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+.aselect li img {
+  margin-right: 10px;
+}
+.aselect li:hover {
+  color: white;
+  background: blue;
+}
+.aselect .current {
+  background: transparent;
+}
+.aselect .hidden {
+  visibility: hidden;
+}
+
+.aselect .visible {
+  visibility: visible;
+}
+</style>
