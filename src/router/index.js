@@ -1,6 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import Home from "@/views/Home.vue"
+import Home from "@/views/Home.vue";
+import OurServices from '@/views/links/OurServices.vue';
+import Industry from "@/views/links/Industry.vue";
+import Portfolio from "@/views/links/Portfolio.vue";
+import AboutUs from '@/views/links/AboutUs.vue';
+import Education from '@/views/links/Education.vue';
 
 const routes = [
   {
@@ -11,27 +16,27 @@ const routes = [
   {
     path: "/Our-services",
     name: "OurServices",
-    component: () => import('@/views/links/OurServices.vue'),
+    component: OurServices,
   },
   {
     path: "/Industry",
     name: "Industry",
-    component:()=> import('@/views/links/Industry.vue'),
+    component:Industry,
   },
   {
     path: "/Portfolio",
     name: "Portfolio",
-    component: ()=> import('@/views/links/Portfolio.vue'),
+    component: Portfolio,
   },
   {
     path: "/About-us",
     name: "AboutUs",
-    component: ()=> import('@/views/links/AboutUs.vue'),
+    component: AboutUs,
   },
   {
     path: "/Education",
     name: "Education",
-    component:()=> import('@/views/links/Education.vue')
+    component:Education
   }
 ];
 

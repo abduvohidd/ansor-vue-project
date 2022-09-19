@@ -65,6 +65,9 @@ export default {
 .actives .span-2::after {
   border-bottom: 8px solid black;
 }
+.actives .dropdown button{
+  color: black
+}
 
 
 .actives a:hover  {

@@ -63,13 +63,13 @@
           <div class="dropdown-content">
             <ul>
               <li>
-                <button @click="changeLang('en')">En</button>
+                <button class="lang" @click="changeLang('en')">En</button>
               </li>
               <li>
-                <button @click="changeLang('uz')">Uz</button>
+                <button class="lang" @click="changeLang('uz')">Uz</button>
               </li>
               <li>
-                <button @click="changeLang('ru')">Ru</button>
+                <button class="lang" @click="changeLang('ru')">Ru</button>
               </li>
             </ul>
           </div>
@@ -449,38 +449,46 @@ nav {
   display: inline-block;
   cursor: pointer;
 }
+.dropdown button {
+  background: none;
+}
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #5d5fef;
-  width: 90%;
+  background-color: #91929a;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  margin-left: 1rem;
+  margin-left: 8px;
   border-radius: 5px;
 }
-.dropdown-content ul li button {
+.dropdown-content ul {
+  margin: 0;
+}
+.dropdown-content ul li .lang {
   width: 100%;
+  margin: 0;
   border: none;
   cursor: pointer;
   border-bottom: 1px solid black;
   opacity: border 0.5;
 
-  background: #5d5fef;
+  background: #91929a;
+}
+.dropdown-content ul li {
+  padding-top: 10px;
 }
 
 .dropdown-content li {
   color: black;
-  padding: 12px 16px;
   text-decoration: none;
   display: block;
+  height: 1rem;
 }
 
 .dropdown-content button:hover {
   background-color: white;
-  height: 100%;
-  padding: 0.5rem;
+  margin-top: 5px;
 }
 
 .dropdown:hover .dropdown-content {
