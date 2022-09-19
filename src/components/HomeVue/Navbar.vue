@@ -9,11 +9,12 @@
         <img class="nav-image" src="@/assets/logo-1.svg" alt="" />
 
         <div class="links">
-          <div class="select" :color="color">
-            <h4 @click="toggle">
+          <div class="select" :color="color" @click="toggle">
+            <h4>
               {{ $t("link.ourService") }}
             </h4>
             <div class="mini-select" v-if="showSelect">
+              <input class="input-dropdown" type="" @focusout="showOut" />
               <router-link :to="{ name: 'Industry' }"
                 >IT consulting</router-link
               >
@@ -39,6 +40,7 @@
               {{ $t("link.industry") }}
             </h4>
             <div class="mini-selectt" v-if="showSelectt">
+              <input class="input-dropdown1" type="" @focusout="showOut" />
               <router-link :to="{ name: 'Industry' }">Healthcare</router-link>
               <router-link :to="{ name: 'Education' }">Education</router-link>
               <router-link :to="{ name: 'Portfolio' }">Finance</router-link>
@@ -54,7 +56,7 @@
           </router-link>
         </div>
 
-        <teleport to="#modals" v-if="showModal">
+        <teleport to="#modals" v-if="showModal" @close="showModal">
           <Modal />
         </teleport>
 
@@ -75,7 +77,7 @@
           </div>
         </div>
 
-        <button class="button" @click="toggleModal()">
+        <button class="button btn1" @click="toggleModal()">
           {{ $t("message.btn") }}
         </button>
       </nav>
@@ -124,7 +126,17 @@ export default {
       this.langShow = !this.langShow;
     },
     outShow() {
+      this.showSelect = !this.showSelect;
+    },
+    showOut() {
       this.showSelect = false;
+      this.showSelectt = false;
+      this.span1 = true;
+      this.span2 = false;
+      this.span11 = true;
+      this.span22 = false;
+      this.showModal = false;
+      console.log("hello");
     },
 
     toggleModal() {
@@ -152,6 +164,28 @@ export default {
 </script>
 
 <style>
+.input-dropdown {
+  position: absolute;
+  z-index: -1;
+  background: transparent;
+  top: 0;
+  left: 0;
+  height: 224px;
+  width: 98%;
+  border: none;
+}
+
+.input-dropdown1 {
+  position: absolute;
+  z-index: -1;
+  background: transparent;
+  top: 0;
+  height: 120px;
+  width: 100%;
+  left: -1px;
+  border: none;
+}
+
 select {
   border: none;
   background: transparent;
@@ -255,6 +289,7 @@ nav {
   width: 222px;
 }
 .links .select .mini-selectt {
+  z-index: 100%;
   display: flex;
   flex-direction: column;
   border: 1px solid #5d5fef;
@@ -271,7 +306,7 @@ nav {
 
 .mini-selectt a {
   margin-top: 5px;
-  z-index: 1%;
+  z-index: 100%;
   color: #ffffff;
 }
 .mini-selectt a:hover {
@@ -345,9 +380,11 @@ nav {
   border: 1px solid #ffffff;
   border-radius: 10px;
   background: transparent;
+  position: relative;
+}
+.btn1 {
   margin-left: 4rem;
 }
-
 /*
 
 */

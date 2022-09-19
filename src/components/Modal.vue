@@ -1,6 +1,7 @@
 <template>
-  <div class="backdrop"  @focusout="focus(false)">
+  <div class="backdrop" v-if="show">
     <div class="modal" :class="{ sale: theme === 'sale' }">
+      <div class="close" @click="closeModal"></div>
       <!-- <slot>default content</slot>
       <div class="actions">
         <slot name="links"></slot>
@@ -42,19 +43,15 @@
 export default {
   props: ["theme"],
 
-  data(){
-    return{
-      show:false,
-    }
+  data() {
+    return {
+      show: true,
+    };
   },
   methods: {
     closeModal() {
-      this.$emit("close");
+      this.show = false;
     },
-    focus(value){
-      this.show = value;
-    }
-   
   },
 };
 </script>
@@ -77,13 +74,15 @@ export default {
   height: 100%;
   width: 100%;
 }
-.close {
+
+.close::after {
+  content: "";
   position: absolute;
   width: 3px;
   height: 20px;
   background: #19172c;
-  top: 3%;
-  transform: rotate(-50deg);
+  top: 12px;
+  transform: rotate(-40deg);
   right: 3%;
   cursor: pointer;
   opacity: 0.5;
@@ -94,9 +93,9 @@ export default {
   width: 20px;
   height: 2px;
   background: #19172c;
-  top: 40%;
-  transform: rotate(10deg);
-  right:-8px;
+  top: 20px;
+  transform: rotate(-45deg);
+  right: 13px;
 }
 .modal-about {
   display: flex;
