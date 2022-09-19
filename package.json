@@ -22,6 +22,7 @@
     "core-js": "^3.8.3",
     "element-plus": "^2.2.13",
     "element-ui": "^2.15.9",
+    "path": "^0.12.7",
     "popper.js": "^1.16.1",
     "primeicons": "^5.0.0",
     "primevue": "^3.15.0",
@@ -31,13 +32,14 @@
     "vue-core-video-player": "^0.2.0",
     "vue-flag-icon": "^2.1.0",
     "vue-flickity": "^1.2.1",
-    "vue-i18n": "^9.2.0-beta.40",
+    "vue-i18n": "^9.3.0-beta.3",
     "vue-material": "^1.0.0-beta-15",
     "vue-router": "^4.0.3",
     "vue-slick-carousel": "^1.0.6",
     "vue-switch-lang": "^0.4.0",
     "vue-video-player": "^6.0.0",
     "vue-xgplayer": "^0.4.2",
+    "vue3-i18n": "^1.1.5",
     "vuetify": "^2.6.8"
   },
   "devDependencies": {

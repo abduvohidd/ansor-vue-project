@@ -10,7 +10,9 @@
 
         <div class="links">
           <div class="select" :color="color">
-            <h4 @click="toggle">Our Services</h4>
+            <h4 @click="toggle">
+              {{ $t("link.ourService") }}
+            </h4>
             <div class="mini-select" v-if="showSelect">
               <router-link :to="{ name: 'Industry' }"
                 >IT consulting</router-link
@@ -33,7 +35,9 @@
             <span class="span-2" v-if="span2"></span>
           </div>
           <div class="select">
-            <h4 @click="togglee">Industry</h4>
+            <h4 @click="togglee">
+              {{ $t("link.industry") }}
+            </h4>
             <div class="mini-selectt" v-if="showSelectt">
               <router-link :to="{ name: 'Industry' }">Healthcare</router-link>
               <router-link :to="{ name: 'Education' }">Education</router-link>
@@ -42,68 +46,38 @@
             <span class="span-1" v-if="span11"></span>
             <span class="span-2" v-if="span22"></span>
           </div>
-          <router-link :to="{ name: 'Portfolio' }">Portfolio</router-link>
-          <router-link :to="{ name: 'AboutUs' }">About Us</router-link>
+          <router-link :to="{ name: 'Portfolio' }">
+            {{ $t("link.portfolio", {}, { locale: lang }) }}
+          </router-link>
+          <router-link :to="{ name: 'AboutUs' }">
+            {{ $t("link.aboutUs", {}, { locale: lang }) }}
+          </router-link>
         </div>
 
         <teleport to="#modals" v-if="showModal">
-          <Modal>
-            <div class="modal-about">
-              <div class="modal-img">
-                <img src="@/assets/cards/log0-2.svg" alt="" />
-              </div>
-              <div class="modal-text">
-                <h1>
-                  Get in touch
-                  <span :class="(isActive = 'active')">with us</span>
-                </h1>
-
-                <form>
-                  <label>Your name</label>
-                  <input type="text" required placeholder="Name here" />
-
-                  <label>Phone number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="+998 (--)--- -- --"
-                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                    required
-                  />
-                  <router-link :to="{ name: 'Industry' }">
-                    <button>Call me</button>
-                  </router-link>
-                </form>
-              </div>
-            </div>
-          </Modal>
+          <Modal />
         </teleport>
 
-        <div class="aselect" :data-value="value" :data-list="list">
-          <div class="selector" @click="togle()">
-            <div class="label">
-              <span><img :src="valueimg" alt="" /> {{ value }}</span>
-            </div>
-            <div class="arrow" :class="{ expanded: visible }"></div>
-            <div :class="{ hidden: !visible, visible }">
-              <ul>
-                <li
-                  :class="{ current: item === value }"
-                  v-for="item in list"
-                  :key="item"
-                  @click="select(item.img && item.item)"
-                >
-                  <img :src="item.img" alt="" /> {{ item.item }}
-                </li>
-              </ul>
-            </div>
+        <div class="dropdown">
+          <button class="dropbtn">Language</button>
+          <div class="dropdown-content">
+            <ul>
+              <li>
+                <button @click="changeLang('en')">En</button>
+              </li>
+              <li>
+                <button @click="changeLang('uz')">Uz</button>
+              </li>
+              <li>
+                <button @click="changeLang('ru')">Ru</button>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <button class="button" @click="toggleModal">Contant Us</button>
-
-        
+        <button class="button" @click="toggleModal()">
+          {{ $t("message.btn") }}
+        </button>
       </nav>
     </div>
   </div>
@@ -114,14 +88,17 @@ import Modal from "@/components/Modal.vue";
 export default {
   name: "locale-changer",
   props: {
-    color: String,
+    color: {
+      String,
+    },
   },
   components: { Modal },
-
   data() {
     return {
+      lang: "en",
       showModal: false,
       showSelect: false,
+      langShow: false,
       showSelectt: false,
       span1: true,
       span2: false,
@@ -130,16 +107,26 @@ export default {
 
       valueimg: require("@/assets/flag/eng-flag.svg"),
       value: "En",
+
       list: [
         { img: require("@/assets/flag/uzb-flag.svg"), item: "Uzb" },
         { img: require("@/assets/flag/rus-flag.svg"), item: "Rus" },
       ],
       visible: false,
-
     };
   },
 
   methods: {
+    changeLang(lang) {
+      this.$i18n.locale = lang;
+    },
+    langg() {
+      this.langShow = !this.langShow;
+    },
+    outShow() {
+      this.showSelect = false;
+    },
+
     toggleModal() {
       this.showModal = !this.showModal;
     },
@@ -154,7 +141,7 @@ export default {
       this.span22 = !this.span22;
     },
 
-    togle() {
+    click() {
       this.visible = !this.visible;
     },
     select(option) {
@@ -358,7 +345,7 @@ nav {
   border: 1px solid #ffffff;
   border-radius: 10px;
   background: transparent;
-  margin-left: 2rem;
+  margin-left: 4rem;
 }
 
 /*
@@ -445,5 +432,62 @@ nav {
 
 .aselect .visible {
   visibility: visible;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  width: 5%;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #5d5fef;
+  width: 90%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-left: 1rem;
+  border-radius: 5px;
+}
+.dropdown-content ul li button {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  border-bottom: 1px solid black;
+  opacity: border 0.5;
+
+  background: #5d5fef;
+}
+
+.dropdown-content li {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content button:hover {
+  background-color: white;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: transparent;
 }
 </style>

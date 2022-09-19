@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Navbar />
-    <Header />
+    <Header :lang="lang" />
   </div>
   <div class="select-1">
     <Card />
@@ -26,6 +26,11 @@ import Footer from "@/components/HomeVue/footer.vue";
 
 export default {
   name: "HomeView",
+  data() {
+    return {
+      lang: "ru",
+    }
+  },
   components: {
     Navbar,
     Header,
@@ -33,7 +38,7 @@ export default {
     Digital,
     Portfolio,
     Footer,
-  },
+},
 
   
 
@@ -44,6 +49,9 @@ export default {
 .home {
   background-image: url("@/assets/technology-background.svg");
   z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .select-1 {
   background: #e5e5e5;

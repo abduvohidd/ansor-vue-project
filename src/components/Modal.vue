@@ -1,9 +1,38 @@
 <template>
-  <div class="backdrop" >
+  <div class="backdrop"  @focusout="focus(false)">
     <div class="modal" :class="{ sale: theme === 'sale' }">
-      <slot>default content</slot>
+      <!-- <slot>default content</slot>
       <div class="actions">
         <slot name="links"></slot>
+      </div> -->
+      <div class="modal-about">
+        <div class="modal-img">
+          <img src="@/assets/cards/log0-2.svg" alt="" />
+        </div>
+        <div class="modal-text">
+          <h1>
+            Get in touch
+            <span :class="(isActive = 'active')">with us</span>
+          </h1>
+
+          <form>
+            <label>Your name</label>
+            <input type="text" required placeholder="Name here" />
+
+            <label>Phone number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+998 (--)--- -- --"
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              required
+            />
+            <router-link :to="{ name: 'Industry' }">
+              <button>Call me</button>
+            </router-link>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -12,10 +41,20 @@
 <script>
 export default {
   props: ["theme"],
+
+  data(){
+    return{
+      show:false,
+    }
+  },
   methods: {
     closeModal() {
       this.$emit("close");
     },
+    focus(value){
+      this.show = value;
+    }
+   
   },
 };
 </script>
@@ -29,6 +68,7 @@ export default {
   margin: 200px auto;
   background: white;
   border-radius: 10px;
+  position: relative;
 }
 .backdrop {
   top: 0;
@@ -36,6 +76,27 @@ export default {
   background: rgba(0, 0, 0, 0.5);
   height: 100%;
   width: 100%;
+}
+.close {
+  position: absolute;
+  width: 3px;
+  height: 20px;
+  background: #19172c;
+  top: 3%;
+  transform: rotate(-50deg);
+  right: 3%;
+  cursor: pointer;
+  opacity: 0.5;
+}
+.close::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: #19172c;
+  top: 40%;
+  transform: rotate(10deg);
+  right:-8px;
 }
 .modal-about {
   display: flex;
@@ -45,7 +106,7 @@ export default {
   justify-content: center;
   margin-right: 3rem;
 }
-.modal-about .modal-img img{
+.modal-about .modal-img img {
   width: 200px;
 }
 

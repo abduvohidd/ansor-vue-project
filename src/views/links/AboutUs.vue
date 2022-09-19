@@ -1,6 +1,6 @@
 <template>
   <div class="about-us">
-    <Navbar :class="(navbar = 'actives')">
+    <Navbar :class="(navbar = 'actives')" :lang="lang">
       <img src="@/assets/logo-1.1.svg" alt="" />
     </Navbar>
     <UsAbout />

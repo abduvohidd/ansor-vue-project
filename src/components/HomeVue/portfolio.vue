@@ -332,11 +332,12 @@ export default {
 }
 .previous {
   position: absolute;
-  top: -85px;
+  top: -120px;
 }
 .flickity-prev-next-button.previous {
   left: 87%;
   width: 4%;
+  margin: 0;
   transform: scaleY(1.5);
 }
 .flickity-prev-next-button .flickity-button-icon {
@@ -350,7 +351,8 @@ export default {
 .next {
   position: absolute;
   width: 4%;
-  top: -85px;
+  top: -120px;
+  margin: 0;
   transform: scaleY(1.5);
 }
 .flickity-page-dots {
@@ -360,6 +362,7 @@ export default {
   padding-bottom: 10rem;
   /* width: 70%; */
   margin: auto;
+  margin-top: 3rem;
 }
 
 .card-texts {
@@ -494,6 +497,7 @@ export default {
   border-radius: 50%;
   border: 1.5px solid #2a2d49;
   opacity: 0.5;
+  transform: translate(10px, -1px);
 }
 
 .title,

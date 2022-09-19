@@ -1,0 +1,26 @@
+  {
+    "message": 
+      {
+        "language": "English",
+        "greeting": "Hello !",
+        "btn": "Contant Us",
+        "header":"We decided to work only for",
+        "header1":"& with them ",
+        "para":"Experienced web and mobile application development team, because there is no site in the world where only Muslims work."
+        
+      }
+    ,
+
+      "link": {
+        "ourService": "Our Services",
+        "industry": "Industry",
+        "portfolio": "Portfolio",
+        "aboutUs": "About us"
+      }
+    ,
+    
+      "active":{
+        "muslims":"MUSLIMS"
+      }
+    
+  }

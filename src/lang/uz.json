@@ -1,0 +1,22 @@
+{
+  "message": {
+        "language": "Uzbek",
+        "greeting": "Assalomu aleykum",
+        "btn": " Biz bilan bog'lanish",
+        "para":"Tajribali veb va mobil ilovalar ishlab chiqish jamoasi, chunki dunyoda faqat musulmonlar ishlaydigan sayt yo'q.",
+        "header1":"& ular bilan ",
+        "header":"Biz faqat ishlashga qaror qildik"
+      }
+      ,
+
+  "link": {
+        "ourService": "Bizning xizmatlarimiz",
+        "industry": "Sanoat",
+        "portfolio": "Portfel",
+        "aboutUs": "Biz haqimizda"
+      }
+      ,
+      "active":{
+        "muslims":"MUSULMONLAR"
+      }
+}

@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <div class="header-about">
-      <h1>
-        We decided to work only for
-        <span :class="{ active: 'isActive' }">MUSLIMS</span> & with them
+      <h1 >
+        {{$t("message.header")}}
+        <span :class="{ active: 'isActive' }">{{$t("active.muslims")}}</span> 
+        {{$t("message.header1")}}
       </h1>
       <p>
-        Experienced web and mobile application development team, because there
-        is no site in the world where only Muslims work.
+        {{$t("message.para")}}
       </p>
 
       <img :src="img" alt="" class="img" />
@@ -28,7 +28,6 @@ export default {
   data() {
     return {
       img: require("@/assets/text-logo.svg"),
-
       photos: [
         {
           id: 1,
