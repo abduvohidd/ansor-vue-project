@@ -14,4 +14,8 @@ export default {};
   text-align: center;
   color: #2c3e50;
 }
+@font-face {
+  font-family: "SF UI Display";
+  src: url("@/assets/fonts/sf_ui_display.ttf");
+}
 </style>

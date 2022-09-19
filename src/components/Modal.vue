@@ -2,10 +2,7 @@
   <div class="backdrop" v-if="show">
     <div class="modal" :class="{ sale: theme === 'sale' }">
       <div class="close" @click="closeModal"></div>
-      <!-- <slot>default content</slot>
-      <div class="actions">
-        <slot name="links"></slot>
-      </div> -->
+      
       <div class="modal-about">
         <div class="modal-img">
           <img src="@/assets/cards/log0-2.svg" alt="" />
