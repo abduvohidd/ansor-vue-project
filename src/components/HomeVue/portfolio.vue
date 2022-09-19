@@ -497,7 +497,6 @@ export default {
   border-radius: 50%;
   border: 1.5px solid #2a2d49;
   opacity: 0.5;
-  transform: translate(10px, -1px);
 }
 
 .title,
