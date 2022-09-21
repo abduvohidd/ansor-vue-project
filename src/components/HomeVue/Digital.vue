@@ -83,7 +83,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 14%;
+  width: 20%;
+  margin: 0 auto 0 0;
 }
 .digital-result .result h3 {
   font-family: "SF UI Display";

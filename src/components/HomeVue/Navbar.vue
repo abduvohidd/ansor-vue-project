@@ -238,7 +238,7 @@ nav {
 .links {
   display: flex;
   width: 50%;
-  margin-left: 10rem;
+  margin-left: 5rem;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -530,6 +530,7 @@ nav {
 }
 .dropdown-content ul {
   margin: 0;
+  list-style:none;
 }
 .dropdown-content ul li .lang {
   width: 100%;

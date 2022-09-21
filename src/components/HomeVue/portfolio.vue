@@ -452,7 +452,7 @@ export default {
 }
 
 .accordion-text {
-  width: 60%;
+  width: 75%;
   margin-top: 3.5rem;
   margin-right: 5rem;
   text-align: start;
