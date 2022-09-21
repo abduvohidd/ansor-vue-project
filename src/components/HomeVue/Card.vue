@@ -23,7 +23,7 @@
         <form>
           <label for="">Write here</label>
           <input type="text" placeholder="I will be glad if you add..." />
-          <button>Send Us</button>
+          <button class="card-button">Send Us</button>
         </form>
       </div>
     </div>
@@ -102,15 +102,15 @@ export default {
   align-items: flex-start;
   justify-content: flex-start;
   width: 255px;
-  height: 68%;
+  height: 65%;
   border: 1px solid #ffffff;
-  margin: 30px 30px 30px 0px;
+  margin: 30px 30px 0px 0px;
   background: #ffffff;
   border-radius: 16px;
 }
 .card-search {
   width: 45%;
-  height: 13rem;
+  /* height: 13rem; */
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -155,13 +155,11 @@ export default {
   padding: 1rem;
   width: 380px;
 }
-.card-search form button {
+.card-search form .card-button{
   width: 124px;
   height: 51px;
-
-  margin: 0.8rem 0;
-  /* margin-left: 16px; */
-
+  margin: 0.8rem 10px;
+  display:initial;
   background: linear-gradient(267.95deg, #40aaf8 -14.86%, #1d33f8 86.76%);
   box-shadow: 0px 4px 32px rgba(32, 80, 253, 0.25);
   border-radius: 10px;
