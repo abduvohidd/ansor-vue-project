@@ -90,7 +90,7 @@ export default {
   font-family: "SF UI Display";
   font-style: normal;
   font-weight: 700;
-  font-size: 72px;
+  font-size: 50px;
   background: linear-gradient(263.88deg, #40aaf8 49.29%, #1d33f8 102.71%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -258,6 +258,9 @@ export default {
   width: 66%;
   transform: none;
 }
+.flickity{
+  width:90%
+}
 .button.activet {
   font-weight: bold;
   border: 1px solid blue;
