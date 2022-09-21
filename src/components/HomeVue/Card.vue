@@ -159,8 +159,8 @@ export default {
   width: 124px;
   height: 51px;
 
-  margin: 0.8rem;
-  margin-left: 16px;
+  margin: 0.8rem 0;
+  /* margin-left: 16px; */
 
   background: linear-gradient(267.95deg, #40aaf8 -14.86%, #1d33f8 86.76%);
   box-shadow: 0px 4px 32px rgba(32, 80, 253, 0.25);
