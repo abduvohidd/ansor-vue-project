@@ -14,7 +14,6 @@
               {{ $t("link.ourService") }}
             </h4>
             <div class="mini-select" v-if="showSelect">
-              <input class="input-dropdown" type="" @focusout="showOut" />
               <router-link :to="{ name: 'Industry' }"
                 >IT consulting</router-link
               >
@@ -40,7 +39,6 @@
               {{ $t("link.industry") }}
             </h4>
             <div class="mini-selectt" v-if="showSelectt">
-              <input class="input-dropdown1" type="" @focusout="showOut" />
               <router-link :to="{ name: 'Industry' }">Healthcare</router-link>
               <router-link :to="{ name: 'Education' }">Education</router-link>
               <router-link :to="{ name: 'Portfolio' }">Finance</router-link>
@@ -65,13 +63,34 @@
           <div class="dropdown-content">
             <ul>
               <li>
-                <button class="lang" @click="changeLang('en')">En</button>
+                <button class="lang" @click="changeLang('en')">
+                  <img
+                    class="lang-img"
+                    src="@/assets/flag/eng-flag.svg"
+                    alt=""
+                  />
+                  En
+                </button>
               </li>
               <li>
-                <button class="lang" @click="changeLang('uz')">Uz</button>
+                <button class="lang" @click="changeLang('uz')">
+                  <img
+                    class="lang-img"
+                    src="@/assets/flag/uzb-flag.svg"
+                    alt=""
+                  />
+                  Uz
+                </button>
               </li>
               <li>
-                <button class="lang" @click="changeLang('ru')">Ru</button>
+                <button class="lang" @click="changeLang('ru')">
+                  <img
+                    class="lang-img"
+                    src="@/assets/flag/rus-flag.svg"
+                    alt=""
+                  />
+                  Ru
+                </button>
               </li>
             </ul>
           </div>
@@ -119,6 +138,10 @@ export default {
   },
 
   methods: {
+    navbar() {
+      this.showSelect = false;
+      this.showSelectt = false;
+    },
     changeLang(lang) {
       this.$i18n.locale = lang;
     },
@@ -146,11 +169,17 @@ export default {
       this.showSelect = !this.showSelect;
       this.span1 = !this.span1;
       this.span2 = !this.span2;
+      this.span11 = true;
+      this.span22 = false;
+      this.showSelectt = false;
     },
     togglee() {
       this.showSelectt = !this.showSelectt;
       this.span11 = !this.span11;
       this.span22 = !this.span22;
+      this.span1 = true;
+      this.span2 = false;
+      this.showSelect = false;
     },
 
     click() {
@@ -496,7 +525,7 @@ nav {
   background-color: #91929a;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  margin-left: 8px;
+  margin-left: -10px;
   border-radius: 5px;
 }
 .dropdown-content ul {
@@ -507,16 +536,19 @@ nav {
   margin: 0;
   border: none;
   cursor: pointer;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
   opacity: border 0.5;
 
   background: #91929a;
 }
+.dropdown-content ul li .lang-img {
+  margin-right: 10px;
+}
+
 .dropdown-content ul li {
   padding-top: 10px;
 }
-
-.dropdown-content li {
+.dropdown-content .dropdown-content li {
   color: black;
   text-decoration: none;
   display: block;
