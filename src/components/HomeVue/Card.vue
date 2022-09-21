@@ -81,7 +81,7 @@ export default {
   flex-wrap: wrap;
   margin: 1rem 0;
   padding-bottom: 5rem;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .card:hover {
