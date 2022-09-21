@@ -15,7 +15,6 @@ export default {};
   text-align: center;
   color: #2c3e50;
   display: grid;
-  max-width: 1800px;
 }
 @font-face {
   font-family: "SF UI Display";
