@@ -174,8 +174,8 @@ export default {
 }
 .card img {
   filter: grayscale(100%);
-  width: 4vw;
-  height: 4vw;
+  width: 3vw;
+  height: 3vw;
 }
 
 .card h3 {
